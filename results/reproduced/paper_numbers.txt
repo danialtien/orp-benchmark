@@ -1,0 +1,114 @@
+quantity                                              paper      ours  status
+-----------------------------------------------------------------------------
+Fig1 IRRA ICFG Ret_R@1 foliage c=0.5 (%)               58.6      58.6  OK
+Fig1 IRRA ICFG Ret_mINP foliage c=0.5 (%)               7.8       7.8  OK
+Fig1 IRRA ICFG Div foliage c=0.5 (x)                    7.5       7.5  OK
+Fig1 IRRA ICFG Div torso c=0.5 (x)                      2.4       2.4  OK
+IRRA ICFG cells with Ret_R@1 > Ret_mINP                  15        15  OK
+Div IRRA CUHK foliage c=0.5 (x)                         2.3       2.3  OK
+Div IRRA RSTPReid foliage c=0.5 (x)                     2.2       2.2  OK
+IRRA ICFG mINP foliage c=0.5 / chance                   5.9       5.9  OK
+Table1 irra_published R@1                             73.16     73.16  OK
+Table1 irra_published mINP                            50.26     50.26  OK
+Table1 irra_published AURC                            53.26     53.26  OK
+Table1 irra_published fol10                           24.17     24.17  OK
+Table1 irra_published fol30                           15.65     15.65  OK
+Table1 irra_published fol50                           10.64     10.64  OK
+Table1 irra_plus_A R@1                                71.51     71.51  OK
+Table1 irra_plus_A mINP                               48.88     48.88  OK
+Table1 irra_plus_A AURC                               68.33     68.33  OK
+Table1 irra_plus_A fol10                              34.99     34.99  OK
+Table1 irra_plus_A fol30                              28.24     28.24  OK
+Table1 irra_plus_A fol50                              23.50     23.50  OK
+Table1 D R@1                                          67.53     67.53  OK
+Table1 D mINP                                         43.77     43.77  OK
+Table1 D AURC                                         55.84     55.84  OK
+Table1 D fol10                                        22.81     22.81  OK
+Table1 D fol30                                        14.75     14.75  OK
+Table1 D fol50                                        10.44     10.44  OK
+Table1 D_plus10 R@1                                   66.16     66.16  OK
+Table1 D_plus10 mINP                                  42.81     42.81  OK
+Table1 D_plus10 AURC                                  55.16     55.16  OK
+Table1 D_plus10 fol10                                 21.92     21.92  OK
+Table1 D_plus10 fol30                                 14.05     14.05  OK
+Table1 D_plus10 fol50                                  9.88      9.88  OK
+Table1 DA_s0 R@1                                      66.34     66.34  OK
+Table1 DA_s0 mINP                                     43.47     43.47  OK
+Table1 DA_s0 AURC                                     65.88     65.88  OK
+Table1 DA_s0 fol10                                    29.38     29.38  OK
+Table1 DA_s0 fol30                                    23.21     23.21  OK
+Table1 DA_s0 fol50                                    18.78     18.78  OK
+Table1 DA_prime R@1                                   66.18     66.18  OK
+Table1 DA_prime mINP                                  43.37     43.37  OK
+Table1 DA_prime AURC                                  65.79     65.79  OK
+Table1 DA_prime fol10                                 29.27     29.27  OK
+Table1 DA_prime fol30                                 22.87     22.87  OK
+Table1 DA_prime fol50                                 18.44     18.44  OK
+Table1 clip_zs R@1                                    11.83     11.83  OK
+Table1 clip_zs mINP                                    3.97      3.97  OK
+Table1 clip_zs AURC                                   51.26     51.26  OK
+Table1 clip_zs fol10                                   1.26      1.26  OK
+Table1 clip_zs fol30                                   0.88      0.88  OK
+Table1 clip_zs fol50                                   0.71      0.71  OK
+CUHK D+A - D mINP-AURC (delta)                        10.04     10.05  OK
+CUHK D+A - D mINP-AURC (CI low)                        9.35      9.37  OK
+CUHK D+A - D mINP-AURC (CI high)                      10.72     10.69  OK
+CUHK cells where D+A > D+10 (abs. mINP)                  15        15  OK
+CUHK D+A - D+10 clean R@1 (delta)                      0.18      0.18  OK
+CUHK D+A - D+10 clean R@1 (CI low)                    -0.67     -0.66  OK
+CUHK D+A - D+10 clean R@1 (CI high)                    1.04      1.04  OK
+CUHK D+A AURC, mean of 3 seeds                        66.23     66.23  OK
+CUHK D+A AURC, SD of 3 seeds                           0.56      0.56  OK
+CUHK IRRA+A - IRRA(published) mINP-AURC (delta)       15.08     15.08  OK
+CUHK IRRA+A - IRRA(published) mINP-AURC (CI low)      14.30     14.30  OK
+CUHK IRRA+A - IRRA(published) mINP-AURC (CI high)     15.84     15.81  OK
+CUHK IRRA+A - IRRA clean R@1                          -1.66     -1.66  OK
+RSTP D+A - D mINP-AURC (delta)                        10.42     10.42  OK
+RSTP D+A - D mINP-AURC (CI low)                        8.41      8.37  OK
+RSTP D+A - D mINP-AURC (CI high)                      12.52     12.66  OK
+RSTP cells where D+A > D (abs. mINP)                     15        15  OK
+ICFG D+A - D mINP-AURC (delta)                         9.34      9.34  OK
+ICFG D+A - D mINP-AURC (CI low)                        8.21      8.20  OK
+ICFG D+A - D mINP-AURC (CI high)                      10.61     10.56  OK
+ICFG cells where D+A > D (abs. mINP)                     15        15  OK
+OOF CUHK (MGCC protocol) mINP D                       34.51     34.51  OK
+OOF RSTPReid c=0.5 mINP D                              5.71      5.71  OK
+OOF CUHK (MGCC protocol) mINP DA_s0                   34.85     34.85  OK
+OOF RSTPReid c=0.5 mINP DA_s0                          5.96      5.96  OK
+Table2 irra_init rstp_R@1                             53.20     53.20  OK
+Table2 irra_init rstp_AURC                            52.53     52.53  OK
+Table2 irra_init rstp_fol50                            2.82      2.82  OK
+Table2 irra_init icfg_AURC                            34.28     34.28  OK
+Table2 irra_plus_A rstp_R@1                           51.30     51.30  OK
+Table2 irra_plus_A rstp_AURC                          65.69     65.69  OK
+Table2 irra_plus_A rstp_fol50                          6.05      6.05  OK
+Table2 irra_plus_A icfg_AURC                          46.74     46.74  OK
+Table2 D rstp_R@1                                     49.00     49.00  OK
+Table2 D rstp_AURC                                    56.62     56.62  OK
+Table2 D rstp_fol50                                    3.51      3.51  OK
+Table2 D icfg_AURC                                    38.78     38.78  OK
+Table2 DA_s0 rstp_R@1                                 47.65     47.65  OK
+Table2 DA_s0 rstp_AURC                                67.04     67.04  OK
+Table2 DA_s0 rstp_fol50                                6.40      6.40  OK
+Table2 DA_s0 icfg_AURC                                48.12     48.12  OK
+Table3 clip_zs mAP                                    21.11     21.11  OK
+Table3 clip_zs mINP                                    5.73      5.73  OK
+Table3 clip_zs mINP_30m                                6.44      6.44  OK
+Table3 clip_zs cuhk_R@1                               11.83     11.83  OK
+Table3 clip_zs rstp_R@1                               13.75     13.75  OK
+Table3 DA_s0 mAP                                      52.61     52.61  OK
+Table3 DA_s0 mINP                                      8.27      8.27  OK
+Table3 DA_s0 mINP_30m                                  8.84      8.84  OK
+Table3 DA_s0 cuhk_R@1                                 66.34     66.34  OK
+Table3 DA_s0 rstp_R@1                                 47.65     47.65  OK
+Table3 DA_nomad mAP                                   64.80     64.80  OK
+Table3 DA_nomad mINP                                  24.72     24.72  OK
+Table3 DA_nomad mINP_30m                              27.35     27.35  OK
+Table3 DA_nomad cuhk_R@1                              56.30     56.30  OK
+Table3 DA_nomad rstp_R@1                              41.03     41.03  OK
+Table3 Stage-2 mINP SD over seeds                      0.37      0.37  OK
+NOMAD actors improved (mINP, seed-mean)                  18        18  OK
+Stage-2 ground cost, CUHK R@1 points                  10.04     10.04  OK
+-----------------------------------------------------------------------------
+109/109 checks OK  (bootstrap B=2000, seed=0)
+wrote results/reproduced/paper_numbers.json

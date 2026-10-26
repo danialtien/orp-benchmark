@@ -1,0 +1,55 @@
+# D+A' (control: training levels disjoint from the test grid)
+# Generated from the original run records. Every training-relevant flag is listed explicitly,
+# including those equal to the trainer default, so no default has to be looked up.
+# Run:  python tools/run_config.py train configs/train/DA_prime.yaml --data-root ../Dataset --out-root runs
+
+name: DA_prime
+paper_label: "D+A' (control: training levels disjoint from the test grid)"
+entry: sar_person.train_dataset
+init_from: D   # config name; resolved to that run's released checkpoint
+seed: 0
+args:
+  datasets: [cuhk_author]
+  limit: 0
+  encoder: clip
+  pretrain: ViT-B/16
+  img-size: [384, 128]
+  full-finetune: true
+  loss: sdm
+  sdm-temp: 0.02
+  hard-neg-weight: 0
+  id-loss-weight: 1.0
+  mlm-loss-weight: 1.0
+  cmt-depth: 4
+  aug: true
+  sampler: random
+  optimizer: adam
+  lr: 1e-5
+  lr-factor: 5.0
+  bias-lr-factor: 2.0
+  weight-decay: 4e-5
+  weight-decay-bias: 0
+  batch: 64
+  eval-every: 5
+  select-metric: "t2i_R@1"
+  eval-ids: 300
+  lr-schedule: constant
+  warmup-epochs: 5
+  epochs: 10
+  eval-size: 1000
+  occ-prob: 0.5
+  occ-variants: [torso, cutout, foliage]
+  occ-levels: [0.25, 0.55, 0.7]
+checkpoint:
+  selection: best   # best = highest validation t2i_R@1 (lora_ckpt.pt); last = final epoch (lora_ckpt_last.pt)
+  selected_epoch: "4 (of 0-9)"
+  validation: "300 held-out training identities (seed 0), capped at 1,000 images"
+  release_file: checkpoints/DA_prime.pt
+  sha256: 65aaff0302f70428026e19c7c9bb4176dc7113baf7781be442fa6981dd096375
+  size_bytes: 598567674
+provenance:
+  original_run: "Result/261017/Docc_lv_025_055_07"
+  original_file: "lora_ckpt.pt"
+  launcher: "scripts/original_launchers/run_revision.sh disjoint"
+  wall_clock_hours: 1.68   # one RTX 3090, AMP fp16, ~13 GB
+notes: "Training coverages {0.25, 0.55, 0.70} share no value with the ORP test grid {0.1,...,0.5}."

@@ -1,0 +1,53 @@
+# D+A -> NOMAD (aerial Stage 2, seed 1)
+# Generated from the original run records. Every training-relevant flag is listed explicitly,
+# including those equal to the trainer default, so no default has to be looked up.
+# Run:  python tools/run_config.py train configs/train/DA_nomad_s1.yaml --data-root ../Dataset --out-root runs
+
+name: DA_nomad_s1
+paper_label: "D+A -> NOMAD (aerial Stage 2, seed 1)"
+entry: sar_person.train_dataset
+init_from: DA_s0   # config name; resolved to that run's released checkpoint
+seed: 1
+args:
+  datasets: [nomad]
+  limit: 0
+  encoder: clip
+  pretrain: ViT-B/16
+  img-size: [384, 128]
+  full-finetune: true
+  loss: sdm
+  sdm-temp: 0.02
+  hard-neg-weight: 0
+  id-loss-weight: 1.0
+  mlm-loss-weight: 0
+  aug: true
+  occ-prob: 0.5
+  occ-variants: [foliage]
+  occ-levels: [0.25, 0.5, 0.7]
+  sampler: random
+  optimizer: adam
+  lr: 5e-6
+  lr-factor: 5.0
+  bias-lr-factor: 2.0
+  weight-decay: 4e-5
+  weight-decay-bias: 0
+  lr-schedule: cosine
+  warmup-epochs: 1
+  epochs: 10
+  batch: 64
+  eval-nomad: val
+  eval-every: 1
+  select-metric: i2t_MRR
+checkpoint:
+  selection: last   # best = highest validation t2i_R@1 (lora_ckpt.pt); last = final epoch (lora_ckpt_last.pt)
+  selected_epoch: "9 (last; no checkpoint is chosen on NOMAD-val)"
+  validation: "NOMAD-val (20 held-out actors) is scored every epoch for monitoring only; the paper uses the LAST epoch"
+  release_file: checkpoints/DA_nomad_s1.pt
+  sha256: 2ce899247feb66689c190017ce5d16a1dfcd971e834ec9369b5b3bacf14ceca4
+  size_bytes: 598568495
+provenance:
+  original_run: "Result/261016/drone/docc_nomad_full_s1"
+  original_file: "lora_ckpt_last.pt"
+  launcher: "SEED=1 bash scripts/drone/train_docc_nomad.sh full docc_nomad_full_s1"
+  wall_clock_hours: 0.19   # one RTX 3090, AMP fp16, ~13 GB
+notes: "MLM is off: NOMAD has one description per actor. Occlusion augmentation is foliage only."

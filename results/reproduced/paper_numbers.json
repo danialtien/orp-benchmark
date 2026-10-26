@@ -1,0 +1,1024 @@
+{
+ "sec3_2": {
+  "ret_R1": 58.64040660736977,
+  "ret_mINP": 7.809678327467942,
+  "div_icfg_fol50": 7.508683987805448,
+  "div_icfg_torso50": 2.420482066890539,
+  "div_cuhk_fol50": 2.2720670190639796,
+  "div_rstp_fol50": 2.162552905579676,
+  "chance_mINP_icfg": 0.10540888434788875,
+  "mINP_over_chance": 5.860619570597419,
+  "cells_R1ret_gt_mINPret_icfg": 15
+ },
+ "table1": {
+  "irra_published": {
+   "R@1": 73.16439246263808,
+   "mINP": 50.261614676373746,
+   "AURC": 53.25543798698582,
+   "fol10": 24.167900121454384,
+   "fol30": 15.646848723748594,
+   "fol50": 10.643288349126511
+  },
+  "irra_plus_A": {
+   "R@1": 71.50747238466538,
+   "mINP": 48.881890963673705,
+   "AURC": 68.33348317673686,
+   "fol10": 34.994357400601025,
+   "fol30": 28.23835012241412,
+   "fol50": 23.498740792584613
+  },
+  "D": {
+   "R@1": 67.52761533463287,
+   "mINP": 43.774984003742254,
+   "AURC": 55.838567606744824,
+   "fol10": 22.8065182946926,
+   "fol30": 14.754728201893878,
+   "fol50": 10.439930527826418
+  },
+  "D_plus10": {
+   "R@1": 66.16309291747888,
+   "mINP": 42.80727836364684,
+   "AURC": 55.15830654572634,
+   "fol10": 21.91979252048187,
+   "fol30": 14.053741689699024,
+   "fol50": 9.876919626661872
+  },
+  "DA_s0": {
+   "R@1": 66.3417803768681,
+   "mINP": 43.473140906360506,
+   "AURC": 65.88412902237474,
+   "fol10": 29.379989631327685,
+   "fol30": 23.21317308069635,
+   "fol50": 18.775699767689353
+  },
+  "DA_prime": {
+   "R@1": 66.17933723196882,
+   "mINP": 43.370297475657225,
+   "AURC": 65.79246322325643,
+   "fol10": 29.270723062482162,
+   "fol30": 22.87485518933873,
+   "fol50": 18.439810955266296
+  },
+  "clip_zs": {
+   "R@1": 11.825860948667966,
+   "mINP": 3.9707465050229547,
+   "AURC": 51.25952850030226,
+   "fol10": 1.2610755364707178,
+   "fol30": 0.880387070034452,
+   "fol50": 0.7108760488071223
+  }
+ },
+ "cuhk_tests": {
+  "DA-D": {
+   "A": "D",
+   "B": "DA_s0",
+   "benchmark": "cuhk",
+   "n_identities": 1000,
+   "B_replicates": 2000,
+   "seed": 0,
+   "aurc_A": 55.838567606744824,
+   "aurc_B": 65.88412902237474,
+   "d_aurc": {
+    "delta": 10.045561415629912,
+    "ci": [
+     9.367339730597262,
+     10.68688551876618
+    ],
+    "sd": 0.336315180009085,
+    "p_le_0": 0.0
+   },
+   "d_clean": {
+    "delta": -0.30184309738174875,
+    "ci": [
+     -0.7507644676872701,
+     0.15570109693373893
+    ],
+    "sd": 0.23037102375871396,
+    "p_le_0": 0.9055
+   },
+   "d_clean_R1": {
+    "delta": -1.1858349577647687,
+    "ci": [
+     -2.0503751672730557,
+     -0.3235777386262682
+    ],
+    "sd": 0.43279438019031014,
+    "p_le_0": 0.9975
+   },
+   "cells_point_positive": 14,
+   "cells_ci_above_0": 14,
+   "cells_ci_below_0": 0
+  },
+  "DA-D10": {
+   "A": "D_plus10",
+   "B": "DA_s0",
+   "benchmark": "cuhk",
+   "n_identities": 1000,
+   "B_replicates": 2000,
+   "seed": 0,
+   "aurc_A": 55.15830654572632,
+   "aurc_B": 65.88412902237474,
+   "d_aurc": {
+    "delta": 10.725822476648418,
+    "ci": [
+     10.065288231221313,
+     11.405560245038945
+    ],
+    "sd": 0.3432515958353996,
+    "p_le_0": 0.0
+   },
+   "d_clean": {
+    "delta": 0.6658625427136684,
+    "ci": [
+     0.16154011359069997,
+     1.1410265171543164
+    ],
+    "sd": 0.24750452901461606,
+    "p_le_0": 0.0045
+   },
+   "d_clean_R1": {
+    "delta": 0.1786874593892236,
+    "ci": [
+     -0.6610743218965247,
+     1.0447222099759004
+    ],
+    "sd": 0.4491103243476007,
+    "p_le_0": 0.3665
+   },
+   "cells_point_positive": 15,
+   "cells_ci_above_0": 15,
+   "cells_ci_below_0": 0
+  },
+  "IRRA+A-IRRA": {
+   "A": "irra_published",
+   "B": "irra_plus_A",
+   "benchmark": "cuhk",
+   "n_identities": 1000,
+   "B_replicates": 2000,
+   "seed": 0,
+   "aurc_A": 53.25543798698582,
+   "aurc_B": 68.33348317673686,
+   "d_aurc": {
+    "delta": 15.078045189751045,
+    "ci": [
+     14.299387388783494,
+     15.81472647115463
+    ],
+    "sd": 0.39577796459144277,
+    "p_le_0": 0.0
+   },
+   "d_clean": {
+    "delta": -1.3797237127000415,
+    "ci": [
+     -1.8072853193863103,
+     -0.9453880879696852
+    ],
+    "sd": 0.22150236346496016,
+    "p_le_0": 1.0
+   },
+   "d_clean_R1": {
+    "delta": -1.6569200779726998,
+    "ci": [
+     -2.3632786704820483,
+     -1.0051241119783476
+    ],
+    "sd": 0.34898174556254563,
+    "p_le_0": 1.0
+   },
+   "cells_point_positive": 14,
+   "cells_ci_above_0": 13,
+   "cells_ci_below_0": 1
+  },
+  "seed_AURC": [
+   65.88412902237474,
+   65.93212383750532,
+   66.88287466662756
+  ],
+  "cells_DA_gt_D10_abs": 15
+ },
+ "rstp_DA-D": {
+  "A": "D",
+  "B": "DA_s0",
+  "benchmark": "rstp",
+  "n_identities": 200,
+  "B_replicates": 2000,
+  "seed": 0,
+  "aurc_A": 56.62093142053644,
+  "aurc_B": 67.03783420502414,
+  "d_aurc": {
+   "delta": 10.416902784487704,
+   "ci": [
+    8.365304621177417,
+    12.663809195606609
+   ],
+   "sd": 1.1035622058400827,
+   "p_le_0": 0.0
+  },
+  "d_clean": {
+   "delta": -0.2858457589987644,
+   "ci": [
+    -0.7986980802885935,
+    0.20578259272792102
+   ],
+   "sd": 0.2605388060146993,
+   "p_le_0": 0.8625
+  },
+  "d_clean_R1": {
+   "delta": -1.3500000000000014,
+   "ci": [
+    -3.301250000000004,
+    0.5499999999999974
+   ],
+   "sd": 0.9694530827429553,
+   "p_le_0": 0.9265
+  },
+  "cells_point_positive": 15,
+  "cells_ci_above_0": 9,
+  "cells_ci_below_0": 0
+ },
+ "icfg_DA-D": {
+  "A": "D",
+  "B": "DA_s0",
+  "benchmark": "icfg",
+  "n_identities": 1000,
+  "B_replicates": 2000,
+  "seed": 0,
+  "aurc_A": 38.775814853019156,
+  "aurc_B": 48.117084476010994,
+  "d_aurc": {
+   "delta": 9.341269622991838,
+   "ci": [
+    8.19905235757197,
+    10.555273401717486
+   ],
+   "sd": 0.594249390062003,
+   "p_le_0": 0.0
+  },
+  "d_clean": {
+   "delta": -0.0033510481855996144,
+   "ci": [
+    -0.07280736500699458,
+    0.06773472998628584
+   ],
+   "sd": 0.03555184348570195,
+   "p_le_0": 0.5265
+  },
+  "d_clean_R1": {
+   "delta": -2.1513502619911264,
+   "ci": [
+    -2.7512130082727864,
+    -1.5940947511338541
+   ],
+   "sd": 0.29052885155618674,
+   "p_le_0": 1.0
+  },
+  "cells_point_positive": 15,
+  "cells_ci_above_0": 14,
+  "cells_ci_below_0": 0
+ },
+ "table2": {
+  "irra_init": {
+   "rstp_R@1": 53.2,
+   "rstp_AURC": 52.5324423403872,
+   "rstp_fol50": 2.815942879067734,
+   "icfg_AURC": 34.28270870999369
+  },
+  "irra_plus_A": {
+   "rstp_R@1": 51.300000000000004,
+   "rstp_AURC": 65.69002022022707,
+   "rstp_fol50": 6.051664710510522,
+   "icfg_AURC": 46.74470423884259
+  },
+  "D": {
+   "rstp_R@1": 49.0,
+   "rstp_AURC": 56.62093142053644,
+   "rstp_fol50": 3.5131357864942405,
+   "icfg_AURC": 38.77581485301916
+  },
+  "DA_s0": {
+   "rstp_R@1": 47.65,
+   "rstp_AURC": 67.03783420502414,
+   "rstp_fol50": 6.402595716831275,
+   "icfg_AURC": 48.117084476010994
+  }
+ },
+ "table3": {
+  "clip_zs": {
+   "mAP": 21.114239171147346,
+   "mINP": 5.727815618738532,
+   "mINP_30m": 6.435631737709628,
+   "cuhk_R@1": 11.825860948667966,
+   "rstp_R@1": 13.750000000000002
+  },
+  "DA_s0": {
+   "mAP": 52.612986210733645,
+   "mINP": 8.266770988702774,
+   "mINP_30m": 8.842950589581068,
+   "cuhk_R@1": 66.3417803768681,
+   "rstp_R@1": 47.65
+  },
+  "DA_nomad": {
+   "mAP": 64.80405051261187,
+   "mINP": 24.717922732234,
+   "mINP_30m": 27.347063138734654,
+   "cuhk_R@1": 56.30279402209228,
+   "rstp_R@1": 41.03333333333333
+  },
+  "DA_nomad_sd": {
+   "mAP": 1.2257636156963838,
+   "mINP": 0.36675964317063425,
+   "mINP_30m": 1.5348046765675767,
+   "cuhk_R@1": 0.4501756484909326,
+   "rstp_R@1": 0.25166114784235816
+  },
+  "DA_nomad_per_seed": [
+   {
+    "mAP": 65.22821731865406,
+    "mINP": 25.031586848199368,
+    "mINP_30m": 29.09913241516341,
+    "cuhk_R@1": 56.04288499025342,
+    "rstp_R@1": 40.8
+   },
+   {
+    "mAP": 63.42254061251879,
+    "mINP": 24.80751257389784,
+    "mINP_30m": 26.701929633387838,
+    "cuhk_R@1": 56.04288499025342,
+    "rstp_R@1": 41.0
+   },
+   {
+    "mAP": 65.76139360666275,
+    "mINP": 24.314668774604797,
+    "mINP_30m": 26.240127367652722,
+    "cuhk_R@1": 56.82261208576998,
+    "rstp_R@1": 41.3
+   }
+  ],
+  "actor_bootstrap_10k": {
+   "stage2_mINP_ci": [
+    15.458998863895735,
+    35.81991753944505
+   ],
+   "delta_mINP_ci": [
+    7.669019510814301,
+    26.998897280233592
+   ]
+  }
+ },
+ "checks": [
+  {
+   "quantity": "Fig1 IRRA ICFG Ret_R@1 foliage c=0.5 (%)",
+   "paper": "58.6",
+   "recomputed": "58.6",
+   "status": "OK"
+  },
+  {
+   "quantity": "Fig1 IRRA ICFG Ret_mINP foliage c=0.5 (%)",
+   "paper": "7.8",
+   "recomputed": "7.8",
+   "status": "OK"
+  },
+  {
+   "quantity": "Fig1 IRRA ICFG Div foliage c=0.5 (x)",
+   "paper": "7.5",
+   "recomputed": "7.5",
+   "status": "OK"
+  },
+  {
+   "quantity": "Fig1 IRRA ICFG Div torso c=0.5 (x)",
+   "paper": "2.4",
+   "recomputed": "2.4",
+   "status": "OK"
+  },
+  {
+   "quantity": "IRRA ICFG cells with Ret_R@1 > Ret_mINP",
+   "paper": "15",
+   "recomputed": "15",
+   "status": "OK"
+  },
+  {
+   "quantity": "Div IRRA CUHK foliage c=0.5 (x)",
+   "paper": "2.3",
+   "recomputed": "2.3",
+   "status": "OK"
+  },
+  {
+   "quantity": "Div IRRA RSTPReid foliage c=0.5 (x)",
+   "paper": "2.2",
+   "recomputed": "2.2",
+   "status": "OK"
+  },
+  {
+   "quantity": "IRRA ICFG mINP foliage c=0.5 / chance",
+   "paper": "5.9",
+   "recomputed": "5.9",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published R@1",
+   "paper": "73.16",
+   "recomputed": "73.16",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published mINP",
+   "paper": "50.26",
+   "recomputed": "50.26",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published AURC",
+   "paper": "53.26",
+   "recomputed": "53.26",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published fol10",
+   "paper": "24.17",
+   "recomputed": "24.17",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published fol30",
+   "paper": "15.65",
+   "recomputed": "15.65",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_published fol50",
+   "paper": "10.64",
+   "recomputed": "10.64",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A R@1",
+   "paper": "71.51",
+   "recomputed": "71.51",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A mINP",
+   "paper": "48.88",
+   "recomputed": "48.88",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A AURC",
+   "paper": "68.33",
+   "recomputed": "68.33",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A fol10",
+   "paper": "34.99",
+   "recomputed": "34.99",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A fol30",
+   "paper": "28.24",
+   "recomputed": "28.24",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 irra_plus_A fol50",
+   "paper": "23.50",
+   "recomputed": "23.50",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D R@1",
+   "paper": "67.53",
+   "recomputed": "67.53",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D mINP",
+   "paper": "43.77",
+   "recomputed": "43.77",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D AURC",
+   "paper": "55.84",
+   "recomputed": "55.84",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D fol10",
+   "paper": "22.81",
+   "recomputed": "22.81",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D fol30",
+   "paper": "14.75",
+   "recomputed": "14.75",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D fol50",
+   "paper": "10.44",
+   "recomputed": "10.44",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 R@1",
+   "paper": "66.16",
+   "recomputed": "66.16",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 mINP",
+   "paper": "42.81",
+   "recomputed": "42.81",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 AURC",
+   "paper": "55.16",
+   "recomputed": "55.16",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 fol10",
+   "paper": "21.92",
+   "recomputed": "21.92",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 fol30",
+   "paper": "14.05",
+   "recomputed": "14.05",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 D_plus10 fol50",
+   "paper": "9.88",
+   "recomputed": "9.88",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 R@1",
+   "paper": "66.34",
+   "recomputed": "66.34",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 mINP",
+   "paper": "43.47",
+   "recomputed": "43.47",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 AURC",
+   "paper": "65.88",
+   "recomputed": "65.88",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 fol10",
+   "paper": "29.38",
+   "recomputed": "29.38",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 fol30",
+   "paper": "23.21",
+   "recomputed": "23.21",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_s0 fol50",
+   "paper": "18.78",
+   "recomputed": "18.78",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime R@1",
+   "paper": "66.18",
+   "recomputed": "66.18",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime mINP",
+   "paper": "43.37",
+   "recomputed": "43.37",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime AURC",
+   "paper": "65.79",
+   "recomputed": "65.79",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime fol10",
+   "paper": "29.27",
+   "recomputed": "29.27",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime fol30",
+   "paper": "22.87",
+   "recomputed": "22.87",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 DA_prime fol50",
+   "paper": "18.44",
+   "recomputed": "18.44",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs R@1",
+   "paper": "11.83",
+   "recomputed": "11.83",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs mINP",
+   "paper": "3.97",
+   "recomputed": "3.97",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs AURC",
+   "paper": "51.26",
+   "recomputed": "51.26",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs fol10",
+   "paper": "1.26",
+   "recomputed": "1.26",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs fol30",
+   "paper": "0.88",
+   "recomputed": "0.88",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table1 clip_zs fol50",
+   "paper": "0.71",
+   "recomputed": "0.71",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D mINP-AURC (delta)",
+   "paper": "10.04",
+   "recomputed": "10.05",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D mINP-AURC (CI low)",
+   "paper": "9.35",
+   "recomputed": "9.37",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D mINP-AURC (CI high)",
+   "paper": "10.72",
+   "recomputed": "10.69",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK cells where D+A > D+10 (abs. mINP)",
+   "paper": "15",
+   "recomputed": "15",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D+10 clean R@1 (delta)",
+   "paper": "0.18",
+   "recomputed": "0.18",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D+10 clean R@1 (CI low)",
+   "paper": "-0.67",
+   "recomputed": "-0.66",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A - D+10 clean R@1 (CI high)",
+   "paper": "1.04",
+   "recomputed": "1.04",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A AURC, mean of 3 seeds",
+   "paper": "66.23",
+   "recomputed": "66.23",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK D+A AURC, SD of 3 seeds",
+   "paper": "0.56",
+   "recomputed": "0.56",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK IRRA+A - IRRA(published) mINP-AURC (delta)",
+   "paper": "15.08",
+   "recomputed": "15.08",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK IRRA+A - IRRA(published) mINP-AURC (CI low)",
+   "paper": "14.30",
+   "recomputed": "14.30",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK IRRA+A - IRRA(published) mINP-AURC (CI high)",
+   "paper": "15.84",
+   "recomputed": "15.81",
+   "status": "OK"
+  },
+  {
+   "quantity": "CUHK IRRA+A - IRRA clean R@1",
+   "paper": "-1.66",
+   "recomputed": "-1.66",
+   "status": "OK"
+  },
+  {
+   "quantity": "RSTP D+A - D mINP-AURC (delta)",
+   "paper": "10.42",
+   "recomputed": "10.42",
+   "status": "OK"
+  },
+  {
+   "quantity": "RSTP D+A - D mINP-AURC (CI low)",
+   "paper": "8.41",
+   "recomputed": "8.37",
+   "status": "OK"
+  },
+  {
+   "quantity": "RSTP D+A - D mINP-AURC (CI high)",
+   "paper": "12.52",
+   "recomputed": "12.66",
+   "status": "OK"
+  },
+  {
+   "quantity": "RSTP cells where D+A > D (abs. mINP)",
+   "paper": "15",
+   "recomputed": "15",
+   "status": "OK"
+  },
+  {
+   "quantity": "ICFG D+A - D mINP-AURC (delta)",
+   "paper": "9.34",
+   "recomputed": "9.34",
+   "status": "OK"
+  },
+  {
+   "quantity": "ICFG D+A - D mINP-AURC (CI low)",
+   "paper": "8.21",
+   "recomputed": "8.20",
+   "status": "OK"
+  },
+  {
+   "quantity": "ICFG D+A - D mINP-AURC (CI high)",
+   "paper": "10.61",
+   "recomputed": "10.56",
+   "status": "OK"
+  },
+  {
+   "quantity": "ICFG cells where D+A > D (abs. mINP)",
+   "paper": "15",
+   "recomputed": "15",
+   "status": "OK"
+  },
+  {
+   "quantity": "OOF CUHK (MGCC protocol) mINP D",
+   "paper": "34.51",
+   "recomputed": "34.51",
+   "status": "OK"
+  },
+  {
+   "quantity": "OOF RSTPReid c=0.5 mINP D",
+   "paper": "5.71",
+   "recomputed": "5.71",
+   "status": "OK"
+  },
+  {
+   "quantity": "OOF CUHK (MGCC protocol) mINP DA_s0",
+   "paper": "34.85",
+   "recomputed": "34.85",
+   "status": "OK"
+  },
+  {
+   "quantity": "OOF RSTPReid c=0.5 mINP DA_s0",
+   "paper": "5.96",
+   "recomputed": "5.96",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_init rstp_R@1",
+   "paper": "53.20",
+   "recomputed": "53.20",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_init rstp_AURC",
+   "paper": "52.53",
+   "recomputed": "52.53",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_init rstp_fol50",
+   "paper": "2.82",
+   "recomputed": "2.82",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_init icfg_AURC",
+   "paper": "34.28",
+   "recomputed": "34.28",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_plus_A rstp_R@1",
+   "paper": "51.30",
+   "recomputed": "51.30",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_plus_A rstp_AURC",
+   "paper": "65.69",
+   "recomputed": "65.69",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_plus_A rstp_fol50",
+   "paper": "6.05",
+   "recomputed": "6.05",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 irra_plus_A icfg_AURC",
+   "paper": "46.74",
+   "recomputed": "46.74",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 D rstp_R@1",
+   "paper": "49.00",
+   "recomputed": "49.00",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 D rstp_AURC",
+   "paper": "56.62",
+   "recomputed": "56.62",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 D rstp_fol50",
+   "paper": "3.51",
+   "recomputed": "3.51",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 D icfg_AURC",
+   "paper": "38.78",
+   "recomputed": "38.78",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 DA_s0 rstp_R@1",
+   "paper": "47.65",
+   "recomputed": "47.65",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 DA_s0 rstp_AURC",
+   "paper": "67.04",
+   "recomputed": "67.04",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 DA_s0 rstp_fol50",
+   "paper": "6.40",
+   "recomputed": "6.40",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table2 DA_s0 icfg_AURC",
+   "paper": "48.12",
+   "recomputed": "48.12",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 clip_zs mAP",
+   "paper": "21.11",
+   "recomputed": "21.11",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 clip_zs mINP",
+   "paper": "5.73",
+   "recomputed": "5.73",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 clip_zs mINP_30m",
+   "paper": "6.44",
+   "recomputed": "6.44",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 clip_zs cuhk_R@1",
+   "paper": "11.83",
+   "recomputed": "11.83",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 clip_zs rstp_R@1",
+   "paper": "13.75",
+   "recomputed": "13.75",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_s0 mAP",
+   "paper": "52.61",
+   "recomputed": "52.61",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_s0 mINP",
+   "paper": "8.27",
+   "recomputed": "8.27",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_s0 mINP_30m",
+   "paper": "8.84",
+   "recomputed": "8.84",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_s0 cuhk_R@1",
+   "paper": "66.34",
+   "recomputed": "66.34",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_s0 rstp_R@1",
+   "paper": "47.65",
+   "recomputed": "47.65",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_nomad mAP",
+   "paper": "64.80",
+   "recomputed": "64.80",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_nomad mINP",
+   "paper": "24.72",
+   "recomputed": "24.72",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_nomad mINP_30m",
+   "paper": "27.35",
+   "recomputed": "27.35",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_nomad cuhk_R@1",
+   "paper": "56.30",
+   "recomputed": "56.30",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 DA_nomad rstp_R@1",
+   "paper": "41.03",
+   "recomputed": "41.03",
+   "status": "OK"
+  },
+  {
+   "quantity": "Table3 Stage-2 mINP SD over seeds",
+   "paper": "0.37",
+   "recomputed": "0.37",
+   "status": "OK"
+  },
+  {
+   "quantity": "NOMAD actors improved (mINP, seed-mean)",
+   "paper": "18",
+   "recomputed": "18",
+   "status": "OK"
+  },
+  {
+   "quantity": "Stage-2 ground cost, CUHK R@1 points",
+   "paper": "10.04",
+   "recomputed": "10.04",
+   "status": "OK"
+  }
+ ]
+}

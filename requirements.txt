@@ -1,0 +1,14 @@
+# Install PyTorch first, with the CUDA build that matches your driver, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# then:  pip install -r requirements.txt
+numpy>=1.24
+pillow>=10.0
+ftfy
+regex
+tqdm
+PyYAML          # tools/run_config.py, eval_protocol --encoder irra
+pyarrow         # only for RSTPReid in parquet layout (sar_person.eval_sets._load_rstp)
+matplotlib      # optional: plots in sar_person.metrics_viz
+scipy           # optional: scripts/measure_occluder_area.py (largest clean region)
+pytest          # optional: tests/
+# Not needed to recompute the paper's numbers from results/: that needs NumPy only.

@@ -1,0 +1,53 @@
+# D+10 (control: same 10 epochs, NO occlusion)
+# Generated from the original run records. Every training-relevant flag is listed explicitly,
+# including those equal to the trainer default, so no default has to be looked up.
+# Run:  python tools/run_config.py train configs/train/D_plus10.yaml --data-root ../Dataset --out-root runs
+
+name: D_plus10
+paper_label: "D+10 (control: same 10 epochs, NO occlusion)"
+entry: sar_person.train_dataset
+init_from: D   # config name; resolved to that run's released checkpoint
+seed: 0
+args:
+  datasets: [cuhk_author]
+  limit: 0
+  encoder: clip
+  pretrain: ViT-B/16
+  img-size: [384, 128]
+  full-finetune: true
+  loss: sdm
+  sdm-temp: 0.02
+  hard-neg-weight: 0
+  id-loss-weight: 1.0
+  mlm-loss-weight: 1.0
+  cmt-depth: 4
+  aug: true
+  sampler: random
+  optimizer: adam
+  lr: 1e-5
+  lr-factor: 5.0
+  bias-lr-factor: 2.0
+  weight-decay: 4e-5
+  weight-decay-bias: 0
+  batch: 64
+  eval-every: 5
+  select-metric: "t2i_R@1"
+  eval-ids: 300
+  lr-schedule: constant
+  warmup-epochs: 5
+  epochs: 10
+  eval-size: 1000
+  occ-prob: 0.0
+checkpoint:
+  selection: best   # best = highest validation t2i_R@1 (lora_ckpt.pt); last = final epoch (lora_ckpt_last.pt)
+  selected_epoch: "4 (of 0-9)"
+  validation: "300 held-out training identities (seed 0, same as D), capped at 1,000 images"
+  release_file: checkpoints/D_plus10.pt
+  sha256: ab2153374fa993f461d0d028abcd72b12eb27e5fe96d0d6dbc1ac0438e49f3f6
+  size_bytes: 598567674
+provenance:
+  original_run: "Result/261017/ctrl_D_plus10_noocc"
+  original_file: "lora_ckpt.pt"
+  launcher: "scripts/original_launchers/run_revision.sh ctrl"
+  wall_clock_hours: 1.64   # one RTX 3090, AMP fp16, ~13 GB
+notes: "Differs from D+A only by --occ-prob 0 (checked by the parity gate in run_revision.sh)."

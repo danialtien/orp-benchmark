@@ -1,0 +1,41 @@
+# Out-of-family (OOF) occluders: real object cut-outs (MGCC's Occlusion Instance
+# Library, 15 classes x 4 PNGs), never used in training.
+# Run:  python tools/run_config.py occlude configs/eval/oof_mgcc.yaml --data-root ../Dataset --out-root runs
+#       python tools/run_config.py eval    configs/eval/oof_mgcc.yaml --model DA_s0 --data-root ../Dataset --out-root runs
+
+name: oof_mgcc
+requires: "OIL library: python scripts/fetch_oil.py --out ../Dataset/OIL"
+
+# Each entry = one occluded gallery. 'one_per_id' occludes one image per identity
+# (MGCC's released code: the first image of each identity, deterministic, no seed);
+# 'all' occludes every gallery image.
+galleries:
+  - tag: cuhk_ogor_l00_one_per_id      # "OOF CUHK (MGCC protocol)" in the paper
+    benchmark: cuhk
+    args: {variants: [ogor], levels: [0.0], occ-select: one_per_id}   # native MGCC per-class area ratios
+  - tag: rstp_ogor_l50                 # "OOF RSTPReid c=0.5" in the paper
+    benchmark: rstp
+    args: {variants: [ogor], levels: [0.5], occ-select: all, ogor-sweep-scale: true}
+  - tag: rstp_ogor_l25
+    benchmark: rstp
+    args: {variants: [ogor], levels: [0.25], occ-select: all, ogor-sweep-scale: true}
+  - tag: rstp_ogor_l70
+    benchmark: rstp
+    args: {variants: [ogor], levels: [0.7], occ-select: all, ogor-sweep-scale: true}
+  - tag: rstp_ogor_l00_one_per_id
+    benchmark: rstp
+    args: {variants: [ogor], levels: [0.0], occ-select: one_per_id}
+  - tag: icfg_ogor_l00_one_per_id
+    benchmark: icfg
+    args: {variants: [ogor], levels: [0.0], occ-select: one_per_id}
+
+generate:
+  entry: sar_person.occlude_bench
+  common_args: {quality: 95, workers: 8}   # --oil-root defaults to <data-root>/OIL
+
+score:
+  entry: sar_person.eval_protocol
+  args: {encoder: clip, pretrain: ViT-B/16, img-size: [384, 128], full-finetune: true, batch: 64}
+  occluded: "--manifest {out_root}/occluded_oof/manifests/{tag}.json"
+
+reference: "manifests/occluded_oof/<tag>.json.gz lists the occluded gallery indices of every gallery"

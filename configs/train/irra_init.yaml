@@ -1,0 +1,35 @@
+# IRRA backbone converted to this repo's checkpoint format (start point of IRRA+A).
+# Not a training run: the published IRRA CUHK-PEDES checkpoint (Jiang & Ye, CVPR 2023)
+# is converted, keeping only the 301 CLIP backbone tensors; IRRA's ID classifier,
+# cross-modal transformer and MLM head are dropped, exactly as D -> D+A drops D's heads.
+# Run:  python tools/run_config.py train configs/train/irra_init.yaml --out-root runs \
+#           --irra-pth /path/to/IRRA/logs/CUHK-PEDES/best.pth
+#
+# This file is NOT redistributed here (it is a re-packaging of IRRA's released weights);
+# obtain best.pth from the IRRA repository (https://github.com/anosorae/IRRA) and convert it.
+
+name: irra_init
+paper_label: "IRRA (published CUHK-PEDES checkpoint), backbone only"
+entry: scripts/convert_irra_ckpt.py
+init_from: null
+seed: null
+args:
+  irra_pth: "<IRRA>/logs/CUHK-PEDES/best.pth"   # set with --irra-pth
+  reference_ckpt: D                               # checks the 301 tensor names/shapes against D
+gate:
+  # The converted weights must reproduce IRRA's clean CUHK-PEDES score under our harness
+  # (scored with --encoder clip, i.e. this repository's model code and preprocessing).
+  benchmark: cuhk
+  metric: "R@1"
+  expected: 72.99          # 73.16 through IRRA's own model code (--encoder irra); IRRA reports 73.38
+  min: 72.0
+checkpoint:
+  selection: n/a
+  release_file: null       # not redistributed; regenerate with the command above
+  sha256: 2d67be8a283f1c7bc1d3728c79612ff9646fece6bbb66d3cc439950e3ae43d40   # of our converted file, for comparison
+  size_bytes: 598567738
+provenance:
+  original_run: "Result/261017/irra_cuhk_init"
+  original_file: "lora_ckpt.pt"
+  launcher: "scripts/original_launchers/run_revision.sh irra (function irra_init)"
+notes: "If your converted file has a different SHA-256, check the gate: equal R@1 means equal weights up to serialisation."

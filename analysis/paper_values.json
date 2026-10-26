@@ -1,0 +1,51 @@
+{
+  "_comment": "Numbers as printed in the KSC 2026 ORP paper (final draft, 2026-10-21). reproduce_paper.py recomputes each one from results/ and reports the difference. Point estimates must match to the printed precision; bootstrap CI endpoints are Monte-Carlo quantities and are checked with a tolerance (see reproduce_paper.py).",
+  "fig1_irra_icfg_foliage50_ret_R1": 58.6,
+  "fig1_irra_icfg_foliage50_ret_mINP": 7.8,
+  "fig1_irra_icfg_div_foliage50": 7.5,
+  "fig1_irra_icfg_div_torso50": 2.4,
+  "div_irra_cuhk_foliage50": 2.3,
+  "div_irra_rstp_foliage50": 2.2,
+  "irra_icfg_mINP_over_chance_foliage50": 5.9,
+  "irra_icfg_cells_R1ret_gt_mINPret": 15,
+  "irra_rescored_cuhk_R1": 73.16,
+
+  "table1": {
+    "irra_published": {"R@1": 73.16, "mINP": 50.26, "AURC": 53.26, "fol10": 24.17, "fol30": 15.65, "fol50": 10.64},
+    "irra_plus_A":    {"R@1": 71.51, "mINP": 48.88, "AURC": 68.33, "fol10": 34.99, "fol30": 28.24, "fol50": 23.50},
+    "D":              {"R@1": 67.53, "mINP": 43.77, "AURC": 55.84, "fol10": 22.81, "fol30": 14.75, "fol50": 10.44},
+    "D_plus10":       {"R@1": 66.16, "mINP": 42.81, "AURC": 55.16, "fol10": 21.92, "fol30": 14.05, "fol50": 9.88},
+    "DA_s0":          {"R@1": 66.34, "mINP": 43.47, "AURC": 65.88, "fol10": 29.38, "fol30": 23.21, "fol50": 18.78},
+    "DA_prime":       {"R@1": 66.18, "mINP": 43.37, "AURC": 65.79, "fol10": 29.27, "fol30": 22.87, "fol50": 18.44},
+    "clip_zs":        {"R@1": 11.83, "mINP": 3.97,  "AURC": 51.26, "fol10": 1.26,  "fol30": 0.88,  "fol50": 0.71}
+  },
+  "cuhk_DA_minus_D_AURC": {"delta": 10.04, "ci": [9.35, 10.72]},
+  "cuhk_DA_beats_D10_cells": 15,
+  "cuhk_DA_minus_D10_cleanR1": {"delta": 0.18, "ci": [-0.67, 1.04]},
+  "cuhk_DA_3seeds_AURC_mean": 66.23,
+  "cuhk_DA_3seeds_AURC_sd": 0.56,
+  "cuhk_irraA_minus_irra_AURC": {"delta": 15.08, "ci": [14.30, 15.84]},
+  "cuhk_irraA_minus_irra_cleanR1": -1.66,
+
+  "rstp_DA_minus_D_AURC": {"delta": 10.42, "ci": [8.41, 12.52]},
+  "icfg_DA_minus_D_AURC": {"delta": 9.34, "ci": [8.21, 10.61]},
+  "rstp_DA_beats_D_cells": 15,
+  "icfg_DA_beats_D_cells": 15,
+  "oof_cuhk_mINP": {"D": 34.51, "DA_s0": 34.85},
+  "oof_rstp50_mINP": {"D": 5.71, "DA_s0": 5.96},
+  "table2": {
+    "irra_init":   {"rstp_R@1": 53.20, "rstp_AURC": 52.53, "rstp_fol50": 2.82, "icfg_AURC": 34.28},
+    "irra_plus_A": {"rstp_R@1": 51.30, "rstp_AURC": 65.69, "rstp_fol50": 6.05, "icfg_AURC": 46.74},
+    "D":           {"rstp_R@1": 49.00, "rstp_AURC": 56.62, "rstp_fol50": 3.51, "icfg_AURC": 38.78},
+    "DA_s0":       {"rstp_R@1": 47.65, "rstp_AURC": 67.04, "rstp_fol50": 6.40, "icfg_AURC": 48.12}
+  },
+
+  "table3": {
+    "clip_zs":   {"mAP": 21.11, "mINP": 5.73,  "mINP_30m": 6.44,  "cuhk_R@1": 11.83, "rstp_R@1": 13.75},
+    "DA_s0":     {"mAP": 52.61, "mINP": 8.27,  "mINP_30m": 8.84,  "cuhk_R@1": 66.34, "rstp_R@1": 47.65},
+    "DA_nomad":  {"mAP": 64.80, "mINP": 24.72, "mINP_30m": 27.35, "cuhk_R@1": 56.30, "rstp_R@1": 41.03}
+  },
+  "nomad_stage2_mINP_sd": 0.37,
+  "nomad_actors_improved": 18,
+  "nomad_ground_cost_cuhk_R1": 10.04
+}

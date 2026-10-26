@@ -1,0 +1,25 @@
+# NOMAD-val: 20 held-out drone actors (actor-disjoint 80/20 split), 1,956 gallery crops,
+# one description per actor -> 20 queries. Used for Table 3 and the aerial seed check.
+# Run:  python tools/run_config.py eval configs/eval/nomad_val.yaml --model DA_nomad_s0 \
+#           --data-root ../Dataset --out-root runs
+
+name: nomad_val
+requires: "NOMAD crops prepared by: python scripts/prepare_nomad.py --workers 8  (-> Dataset/NOMAD/crop)"
+
+score:
+  entry: sar_person.eval_protocol
+  args:
+    benchmark: nomad
+    nomad-split: val
+    nomad-crop: crop
+    nomad-prompt-style: default
+    encoder: clip
+    pretrain: ViT-B/16
+    img-size: [384, 128]
+    batch: 64
+    breakdown: [visibility, altitude_m]     # "mINP at 30 m" in Table 3 comes from altitude_m
+  output: "{out_root}/{model}/eval/nomad_val/metrics.json"
+
+paper_models: [clip_zs, DA_s0, DA_nomad_s0, DA_nomad_s1, DA_nomad_s2]
+chance_level_mINP: 5.05     # random ranking, computed from the manifest (about 98 crops per actor)
+reference: "manifests/evalsets/nomad.json.gz"

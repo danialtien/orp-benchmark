@@ -1,0 +1,15 @@
+# data, run outputs and weights are never committed
+runs/
+checkpoints/*.pt
+checkpoints/SHA256SUMS
+Dataset/
+*.jpg
+*.png
+!docs/**/*.png
+# local maintainer inputs
+_incoming/
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/

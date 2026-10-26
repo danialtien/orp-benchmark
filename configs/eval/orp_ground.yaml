@@ -1,0 +1,56 @@
+# ORP evaluation on the three ground benchmarks: clean + 15 occluded cells each.
+# Run:  python tools/run_config.py eval configs/eval/orp_ground.yaml --model DA_s0 \
+#           --data-root ../Dataset --out-root runs [--ckpt checkpoints/DA_s0.pt]
+#
+# 1) The occluded galleries are generated once (shared by every model):
+#      python tools/run_config.py occlude configs/eval/orp_ground.yaml --data-root ../Dataset --out-root runs
+# 2) Every model is then scored on the SAME images.
+
+name: orp_ground
+benchmarks: [cuhk, rstp, icfg]
+
+# ---- the ORP grid (Sec. 2.1) -----------------------------------------------
+grid:
+  geometries: [torso, cutout, foliage]   # one band / scattered blocks / fragmented leaves
+  coverages: [0.1, 0.2, 0.3, 0.4, 0.5]   # nominal coverage c; tag l10 ... l50
+  jpeg_quality: 95
+  per_image_seed: "sha1(dataset-relative image_id)[:4] (little-endian) & 0x7FFFFFFF"   # sar_person.occlude_bench._seed_for
+  occluded_root: "{out_root}/occluded"   # images/<bench>_<geom>_lNN/ + manifests/<bench>_<geom>_lNN.json
+
+generate:
+  entry: sar_person.occlude_bench
+  args:
+    variants: [torso, cutout, foliage]
+    levels: [0.1, 0.2, 0.3, 0.4, 0.5]
+    quality: 95
+    workers: 8
+
+# ---- scoring -------------------------------------------------------------
+score:
+  entry: sar_person.eval_protocol
+  args:                       # identical for clean and occluded cells
+    encoder: clip
+    pretrain: ViT-B/16
+    img-size: [384, 128]
+    full-finetune: true
+    batch: 64
+  clean: "--benchmark {bench} --evalset-cache {out_root}/evalsets"
+  occluded: "--manifest {out_root}/occluded/manifests/{bench}_{geom}_l{NN}.json"
+  output: "{out_root}/{model}/eval/{bench}_{cell}/metrics.json"
+
+# Models scored on each benchmark in the paper (others can be added freely).
+paper_models:
+  cuhk: [clip_zs, irra_published, D, D_plus10, DA_s0, DA_s1, DA_s2, DA_prime, IRRA_plus_A, DA_nomad_s0, DA_nomad_s1, DA_nomad_s2]
+  rstp: [clip_zs, irra_published, D, D_plus10, DA_s0, DA_s1, DA_s2, DA_prime, IRRA_plus_A, DA_nomad_s0, DA_nomad_s1, DA_nomad_s2]
+  icfg: [irra_published, D, D_plus10, DA_s0, IRRA_plus_A]   # DA_s1/DA_s2 on ICFG-PEDES: pending, see docs/STATISTICS.md
+
+# Special encoders
+clip_zs:          # CLIP zero-shot: no --ckpt, same image size
+  ckpt: null
+irra_published:   # IRRA's own model code and checkpoint, through our harness
+  args:
+    encoder: irra
+    irra-root: "<path to a clone of https://github.com/anosorae/IRRA>"
+    irra-config: "<IRRA>/logs/CUHK-PEDES/configs.yaml"
+    irra-ckpt: "<IRRA>/logs/CUHK-PEDES/best.pth"
+  sanity_check: "clean CUHK-PEDES R@1 = 73.16 (IRRA reports 73.38)"

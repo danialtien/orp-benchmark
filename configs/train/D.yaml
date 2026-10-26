@@ -1,0 +1,53 @@
+# D
+# Generated from the original run records. Every training-relevant flag is listed explicitly,
+# including those equal to the trainer default, so no default has to be looked up.
+# Run:  python tools/run_config.py train configs/train/D.yaml --data-root ../Dataset --out-root runs
+
+name: D
+paper_label: "D"
+entry: sar_person.train_dataset
+init_from: null   # config name; resolved to that run's released checkpoint
+seed: 0
+args:
+  datasets: [cuhk_author]
+  limit: 0
+  encoder: clip
+  pretrain: ViT-B/16
+  img-size: [384, 128]
+  full-finetune: true
+  loss: sdm
+  sdm-temp: 0.02
+  hard-neg-weight: 0
+  id-loss-weight: 1.0
+  mlm-loss-weight: 1.0
+  cmt-depth: 4
+  aug: true
+  sampler: random
+  optimizer: adam
+  lr: 1e-5
+  lr-factor: 5.0
+  bias-lr-factor: 2.0
+  weight-decay: 4e-5
+  weight-decay-bias: 0
+  batch: 64
+  eval-every: 5
+  select-metric: "t2i_R@1"
+  eval-ids: 300
+  lr-schedule: cosine
+  warmup-epochs: 5
+  epochs: 60
+  eval-size: 3000
+  occ-prob: 0.0
+checkpoint:
+  selection: best   # best = highest validation t2i_R@1 (lora_ckpt.pt); last = final epoch (lora_ckpt_last.pt)
+  selected_epoch: "44 (of 0-59)"
+  validation: "300 held-out training identities, 1,039 images (--eval-size 3000 keeps all of them)"
+  release_file: checkpoints/D.pt
+  sha256: d75f8020dbeb2f3ff166f83ba33d660a2c1d50e152d5e4d5dcdcdf72f8b41cfe
+  size_bytes: 598567674
+provenance:
+  original_run: "Result/260915/isatmp_D_cuhk_author_sdm"
+  original_file: "0928_lora_ckpt.pt"
+  launcher: "occ_study/rstar_scripts/train_isatmp.sh D cuhk_author sdm 0 (round D, IRRA parity)"
+  wall_clock_hours: 9.38   # one RTX 3090, AMP fp16, ~13 GB
+notes: "Random Erasing is part of --aug (hflip 0.5, pad-10 crop, random-erasing 0.5). --num-instance 2 was also passed but is inert with --sampler random."

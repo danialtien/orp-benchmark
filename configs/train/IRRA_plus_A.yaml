@@ -1,0 +1,55 @@
+# IRRA+A (D+A recipe started from the published IRRA backbone)
+# Generated from the original run records. Every training-relevant flag is listed explicitly,
+# including those equal to the trainer default, so no default has to be looked up.
+# Run:  python tools/run_config.py train configs/train/IRRA_plus_A.yaml --data-root ../Dataset --out-root runs
+
+name: IRRA_plus_A
+paper_label: "IRRA+A (D+A recipe started from the published IRRA backbone)"
+entry: sar_person.train_dataset
+init_from: irra_init   # config name; resolved to that run's released checkpoint
+seed: 0
+args:
+  datasets: [cuhk_author]
+  limit: 0
+  encoder: clip
+  pretrain: ViT-B/16
+  img-size: [384, 128]
+  full-finetune: true
+  loss: sdm
+  sdm-temp: 0.02
+  hard-neg-weight: 0
+  id-loss-weight: 1.0
+  mlm-loss-weight: 1.0
+  cmt-depth: 4
+  aug: true
+  sampler: random
+  optimizer: adam
+  lr: 1e-5
+  lr-factor: 5.0
+  bias-lr-factor: 2.0
+  weight-decay: 4e-5
+  weight-decay-bias: 0
+  batch: 64
+  eval-every: 5
+  select-metric: "t2i_R@1"
+  eval-ids: 300
+  lr-schedule: constant
+  warmup-epochs: 5
+  epochs: 10
+  eval-size: 1000
+  occ-prob: 0.5
+  occ-variants: [torso, cutout, foliage]
+  occ-levels: [0.25, 0.5, 0.7]
+checkpoint:
+  selection: best   # best = highest validation t2i_R@1 (lora_ckpt.pt); last = final epoch (lora_ckpt_last.pt)
+  selected_epoch: "9 (of 0-9)"
+  validation: "300 held-out training identities (seed 0), capped at 1,000 images"
+  release_file: checkpoints/IRRA_plus_A.pt
+  sha256: d85eb49b0209f97993a5906585acd8463a1e8d2bcc0eba408fd8766cacce1b04
+  size_bytes: 598567674
+provenance:
+  original_run: "Result/261017/irra_plus_occ"
+  original_file: "lora_ckpt.pt"
+  launcher: "scripts/original_launchers/run_revision.sh irra"
+  wall_clock_hours: 1.64   # one RTX 3090, AMP fp16, ~13 GB
+notes: "Initialised from configs/train/irra_init.yaml (IRRA CUHK-PEDES best.pth, backbone only)."
